@@ -168,4 +168,9 @@ impl VirtualDevice {
         let syn = InputEvent::new(EventType::SYNCHRONIZATION, 0, 0);
         self.write_raw(&[syn])
     }
+
+    pub fn emit_raw(&mut self, messages: &[InputEvent]) -> io::Result<()> {
+        self.write_raw(messages)?;
+        Ok(())
+    }
 }
